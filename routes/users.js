@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { body, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
@@ -13,11 +13,11 @@ const User = require('../models/User');
 router.post(
     '/',
     [
-        body('name', 'Please add name')
+        check('name', 'Please add name')
             .not()
             .isEmpty(),
-        body('email', 'Please include a valide email').isEmail(),
-        body(
+        check('email', 'Please include a valide email').isEmail(),
+        check(
             'password',
             'Please enter a password with 6 or more characters'
         ).isLength({ min: 6 })
