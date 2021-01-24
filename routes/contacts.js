@@ -5,7 +5,6 @@ const { body, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 const Contact = require('../models/Contact');
-const { restart } = require('nodemon');
 
 // @route   GET    api/contacts
 // @desc    Get all users contacts
